@@ -2,6 +2,16 @@
 
 Uniswap V3 AI tools (skills, plugins) for developers and AI agents integrating the Uniswap V3 protocol on Ethereum and Arbitrum.
 
+## Skills & Plugins
+
+| Name | Description |
+|------|-------------|
+| `uniswap-integration` | Direct Uniswap V3 protocol integration — read pool data, get quotes, simulate swaps |
+| `uniswap-planner` | Position planning and strategy generation for swaps and liquidity |
+| `uniswap-risk-assessor` | Risk analysis: slippage, price impact, impermanent loss |
+| `uniswap-security-foundations` | Security guidance, MEV protection, and audit checklists |
+| `uniswap-viem-integration` | EVM integration using viem for Ethereum and Arbitrum |
+
 ## Installation
 
 ### Claude Code — Plugin Marketplace
@@ -32,9 +42,55 @@ npx skills add coolclaws/uniswap-ai --skill uniswap-security-foundations
 npx skills add coolclaws/uniswap-ai --skill uniswap-viem-integration
 ```
 
+## Usage in Claude
+
+Once installed, Claude will automatically use the appropriate skill based on your intent:
+
+- **"Get a swap quote for 1000 USDC to WETH on Ethereum"** → `uniswap-integration`
+- **"Plan a swap strategy for USDC → WETH with 0.5% slippage"** → `uniswap-planner`
+- **"What's the risk of swapping 50,000 USDC in the USDC/WETH pool?"** → `uniswap-risk-assessor`
+- **"Review security checklist before executing this swap"** → `uniswap-security-foundations`
+- **"Set up a viem client for Uniswap on Arbitrum"** → `uniswap-viem-integration`
+
+## Supported Chains
+
+- **Ethereum Mainnet** (chainId: 1)
+- **Arbitrum One** (chainId: 42161)
+
+## Scripts (Direct CLI Usage)
+
+All scripts can be run directly with `npx tsx`:
+
+```bash
+# Get a swap quote (chainId, tokenIn, tokenOut, amountIn)
+npx tsx packages/plugins/uniswap-integration/scripts/quote-swap.ts 1 USDC WETH 1000
+
+# Get pool data (chainId, token0, token1, fee)
+npx tsx packages/plugins/uniswap-integration/scripts/get-pool-data.ts 1 USDC WETH 3000
+
+# Get token price
+npx tsx packages/plugins/uniswap-integration/scripts/get-token-price.ts 1 WETH
+
+# Simulate a swap with slippage (chainId, tokenIn, tokenOut, amountIn, slippage%)
+npx tsx packages/plugins/uniswap-integration/scripts/simulate-swap.ts 1 USDC WETH 1000 0.5
+
+# Plan a swap
+npx tsx packages/plugins/uniswap-planner/scripts/plan-swap.ts 1 USDC WETH 1000
+```
+
+## Environment Variables
+
+```bash
+ETHEREUM_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
+ARBITRUM_RPC_URL=https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY
+PRIVATE_KEY=0x...   # required for transaction execution only
+```
+
+---
+
 ## MCP Server
 
-Use uniswap-ai as an MCP server with Claude Desktop, Cursor, or any MCP-compatible client. The server runs **locally on your machine** — no deployment needed.
+For developers who want to use uniswap-ai as an MCP server with Claude Desktop, Cursor, or any MCP-compatible client. The server runs **locally on your machine** — no deployment needed.
 
 ### Setup (Claude Desktop)
 
@@ -89,7 +145,7 @@ Once configured, you can ask Claude:
 
 ### Publishing to npm
 
-The MCP package is ready to publish. When you're ready:
+When you're ready to publish `@uniswap-ai/mcp`:
 
 1. Add your npm token to GitHub repo secrets: `Settings → Secrets → New → NPM_TOKEN`
 2. Tag and push:
@@ -97,63 +153,9 @@ The MCP package is ready to publish. When you're ready:
 git tag mcp-v0.1.0
 git push origin mcp-v0.1.0
 ```
-GitHub Actions will automatically build and publish `@uniswap-ai/mcp` to npm.
+GitHub Actions will automatically build and publish to npm.
 
 ---
-
-## Skills & Plugins
-
-| Name | Description |
-|------|-------------|
-| `uniswap-integration` | Direct Uniswap V3 protocol integration — read pool data, get quotes, simulate swaps |
-| `uniswap-planner` | Position planning and strategy generation for swaps and liquidity |
-| `uniswap-risk-assessor` | Risk analysis: slippage, price impact, impermanent loss |
-| `uniswap-security-foundations` | Security guidance, MEV protection, and audit checklists |
-| `uniswap-viem-integration` | EVM integration using viem for Ethereum and Arbitrum |
-
-## Supported Chains
-
-- **Ethereum Mainnet** (chainId: 1)
-- **Arbitrum One** (chainId: 42161)
-
-## Usage in Claude
-
-Once installed, Claude will automatically use the appropriate skill based on your intent:
-
-- **"Get a swap quote for 1000 USDC to WETH on Ethereum"** → `uniswap-integration`
-- **"Plan a swap strategy for USDC → WETH with 0.5% slippage"** → `uniswap-planner`
-- **"What's the risk of swapping 50,000 USDC in the USDC/WETH pool?"** → `uniswap-risk-assessor`
-- **"Review security checklist before executing this swap"** → `uniswap-security-foundations`
-- **"Set up a viem client for Uniswap on Arbitrum"** → `uniswap-viem-integration`
-
-## Scripts (Direct CLI Usage)
-
-All scripts can be run directly with `npx tsx`:
-
-```bash
-# Get a swap quote (chainId, tokenIn, tokenOut, amountIn)
-npx tsx packages/plugins/uniswap-integration/scripts/quote-swap.ts 1 USDC WETH 1000
-
-# Get pool data (chainId, token0, token1, fee)
-npx tsx packages/plugins/uniswap-integration/scripts/get-pool-data.ts 1 USDC WETH 3000
-
-# Get token price
-npx tsx packages/plugins/uniswap-integration/scripts/get-token-price.ts 1 WETH
-
-# Simulate a swap with slippage (chainId, tokenIn, tokenOut, amountIn, slippage%)
-npx tsx packages/plugins/uniswap-integration/scripts/simulate-swap.ts 1 USDC WETH 1000 0.5
-
-# Plan a swap
-npx tsx packages/plugins/uniswap-planner/scripts/plan-swap.ts 1 USDC WETH 1000
-```
-
-## Environment Variables
-
-```bash
-ETHEREUM_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
-ARBITRUM_RPC_URL=https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY
-PRIVATE_KEY=0x...   # required for transaction execution only
-```
 
 ## Development
 

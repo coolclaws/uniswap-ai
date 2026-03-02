@@ -1,0 +1,12 @@
+{
+  "name": "@uniswap-ai/skill-uniswap-planner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Installable skill package for Uniswap V3 position planning",
+  "license": "MIT",
+  "files": [
+    "SKILL.md",
+    "scripts",
+    "references"
+  ]
+}

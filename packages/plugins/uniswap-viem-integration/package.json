@@ -1,0 +1,27 @@
+{
+  "name": "@uniswap/uniswap-viem-integration",
+  "version": "0.0.1",
+  "private": true,
+  "description": "EVM blockchain integration using viem for Uniswap V3 operations",
+  "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coolclaws/uniswap-ai.git",
+    "directory": "packages/plugins/uniswap-viem-integration"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "uniswap",
+    "defi",
+    "viem",
+    "ethereum",
+    "arbitrum"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills",
+    "README.md"
+  ]
+}

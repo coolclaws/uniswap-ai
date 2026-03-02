@@ -1,0 +1,19 @@
+{
+  "name": "uniswap-security-foundations",
+  "version": "1.0.0",
+  "description": "Security guidance and audit checklists for Uniswap V3 integrations",
+  "author": {
+    "name": "Uniswap AI Contributors",
+    "email": "contributors@uniswap-ai.dev"
+  },
+  "homepage": "https://github.com/coolclaws/uniswap-ai",
+  "keywords": [
+    "uniswap",
+    "defi",
+    "security",
+    "audit",
+    "checklist"
+  ],
+  "license": "MIT",
+  "skills": ["./skills/security"]
+}

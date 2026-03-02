@@ -1,0 +1,66 @@
+{
+  "name": "uniswap-ai",
+  "version": "1.0.0",
+  "owner": {
+    "name": "coolclaws",
+    "email": "coolclaws@uniswap-ai.dev"
+  },
+  "metadata": {
+    "description": "Uniswap V3 AI tools (skills, plugins, agents) for developers and AI agents integrating the Uniswap V3 protocol.",
+    "repository": "https://github.com/coolclaws/uniswap-ai"
+  },
+  "skills": [
+    {
+      "name": "uniswap-integration",
+      "source": "./skills/uniswap-integration",
+      "description": "Direct Uniswap V3 protocol integration for reading on-chain data and executing swaps"
+    },
+    {
+      "name": "uniswap-planner",
+      "source": "./skills/uniswap-planner",
+      "description": "Position planning and strategy generation for Uniswap V3 swaps and liquidity"
+    },
+    {
+      "name": "uniswap-risk-assessor",
+      "source": "./skills/uniswap-risk-assessor",
+      "description": "Risk analysis including slippage, price impact, and impermanent loss for Uniswap positions"
+    },
+    {
+      "name": "uniswap-security-foundations",
+      "source": "./skills/uniswap-security-foundations",
+      "description": "Security guidance and audit checklists for Uniswap V3 integrations"
+    },
+    {
+      "name": "uniswap-viem-integration",
+      "source": "./skills/uniswap-viem-integration",
+      "description": "EVM blockchain integration using viem for Uniswap V3 operations"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "uniswap-integration",
+      "source": "./packages/plugins/uniswap-integration",
+      "description": "Direct Uniswap V3 protocol integration for reading on-chain data and executing swaps"
+    },
+    {
+      "name": "uniswap-planner",
+      "source": "./packages/plugins/uniswap-planner",
+      "description": "Position planning and strategy generation for Uniswap V3 swaps and liquidity"
+    },
+    {
+      "name": "uniswap-risk-assessor",
+      "source": "./packages/plugins/uniswap-risk-assessor",
+      "description": "Risk analysis including slippage, price impact, and impermanent loss for Uniswap positions"
+    },
+    {
+      "name": "uniswap-security-foundations",
+      "source": "./packages/plugins/uniswap-security-foundations",
+      "description": "Security guidance and audit checklists for Uniswap V3 integrations"
+    },
+    {
+      "name": "uniswap-viem-integration",
+      "source": "./packages/plugins/uniswap-viem-integration",
+      "description": "EVM blockchain integration using viem for Uniswap V3 operations"
+    }
+  ]
+}

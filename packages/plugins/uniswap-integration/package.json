@@ -1,0 +1,27 @@
+{
+  "name": "@uniswap-ai/uniswap-integration",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Core Uniswap V3 integration, quotes, and pool data",
+  "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coolclaws/uniswap-ai.git",
+    "directory": "packages/plugins/uniswap-integration"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "uniswap",
+    "defi",
+    "amm",
+    "v3"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills",
+    "agents",
+    "README.md"
+  ]
+}

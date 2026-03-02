@@ -1,0 +1,20 @@
+{
+  "name": "uniswap-planner",
+  "version": "1.0.0",
+  "description": "Position planning and strategy generation for Uniswap V3 swaps and liquidity",
+  "author": {
+    "name": "Uniswap AI Contributors",
+    "email": "contributors@uniswap-ai.dev"
+  },
+  "homepage": "https://github.com/coolclaws/uniswap-ai",
+  "keywords": [
+    "uniswap",
+    "defi",
+    "planning",
+    "strategy",
+    "liquidity",
+    "position"
+  ],
+  "license": "MIT",
+  "skills": ["./skills/planner"]
+}

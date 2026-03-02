@@ -1,0 +1,21 @@
+{
+  "name": "uniswap-risk-assessor",
+  "version": "0.1.0",
+  "description": "Risk analysis for Uniswap V3 including slippage, price impact, and impermanent loss",
+  "author": {
+    "name": "Uniswap AI Contributors",
+    "email": "contributors@uniswap-ai.dev"
+  },
+  "homepage": "https://github.com/coolclaws/uniswap-ai",
+  "keywords": [
+    "uniswap",
+    "defi",
+    "risk",
+    "slippage",
+    "impermanent-loss",
+    "price-impact"
+  ],
+  "license": "MIT",
+  "skills": ["./skills/risk"],
+  "agents": []
+}

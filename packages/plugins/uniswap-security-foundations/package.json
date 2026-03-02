@@ -1,0 +1,27 @@
+{
+  "name": "@uniswap/uniswap-security-foundations",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Security guidance and audit checklists for Uniswap V3 integrations",
+  "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coolclaws/uniswap-ai.git",
+    "directory": "packages/plugins/uniswap-security-foundations"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "uniswap",
+    "defi",
+    "security",
+    "audit",
+    "checklist"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills",
+    "README.md"
+  ]
+}

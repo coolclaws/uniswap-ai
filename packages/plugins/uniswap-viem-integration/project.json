@@ -1,0 +1,15 @@
+{
+  "name": "uniswap-viem-integration",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugins/uniswap-viem-integration",
+  "projectType": "library",
+  "tags": ["type:plugin", "scope:uniswap"],
+  "targets": {
+    "lint-markdown": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-viem-integration/**/*.md'"
+      }
+    }
+  }
+}

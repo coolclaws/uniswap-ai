@@ -1,0 +1,20 @@
+{
+  "name": "uniswap-viem-integration",
+  "version": "1.0.0",
+  "description": "EVM blockchain integration using viem for Uniswap V3 operations",
+  "author": {
+    "name": "Uniswap AI Contributors",
+    "email": "contributors@uniswap-ai.dev"
+  },
+  "homepage": "https://github.com/coolclaws/uniswap-ai",
+  "keywords": [
+    "uniswap",
+    "defi",
+    "viem",
+    "ethereum",
+    "arbitrum",
+    "blockchain"
+  ],
+  "license": "MIT",
+  "skills": ["./skills/viem"]
+}

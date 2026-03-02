@@ -1,0 +1,8 @@
+{
+  "name": "uniswap-planner",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugins/uniswap-planner",
+  "projectType": "library",
+  "tags": ["type:plugin", "scope:uniswap"],
+  "targets": {}
+}

@@ -1,0 +1,21 @@
+{
+  "name": "uniswap-integration",
+  "version": "1.0.0",
+  "description": "Direct Uniswap V3 protocol integration for reading on-chain data and executing swaps",
+  "author": {
+    "name": "Uniswap AI Contributors",
+    "email": "contributors@uniswap-ai.dev"
+  },
+  "homepage": "https://github.com/coolclaws/uniswap-ai",
+  "keywords": [
+    "uniswap",
+    "defi",
+    "amm",
+    "swap",
+    "uniswap-v3",
+    "ethereum",
+    "arbitrum"
+  ],
+  "license": "MIT",
+  "skills": ["./skills/integration"]
+}

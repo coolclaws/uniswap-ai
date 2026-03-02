@@ -1,0 +1,27 @@
+{
+  "name": "@uniswap-ai/uniswap-risk-assessor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Risk assessment for Uniswap V3 swaps and liquidity positions",
+  "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coolclaws/uniswap-ai.git",
+    "directory": "packages/plugins/uniswap-risk-assessor"
+  },
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "uniswap",
+    "defi",
+    "risk",
+    "slippage",
+    "impermanent-loss"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills",
+    "README.md"
+  ]
+}

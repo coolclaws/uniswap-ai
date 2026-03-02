@@ -1,0 +1,11 @@
+{
+  "name": "@uniswap-ai/skill-uniswap-risk-assessor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Installable skill package for Uniswap V3 risk analysis",
+  "license": "MIT",
+  "files": [
+    "SKILL.md",
+    "references"
+  ]
+}

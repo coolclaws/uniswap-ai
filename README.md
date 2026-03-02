@@ -32,6 +32,75 @@ npx skills add coolclaws/uniswap-ai --skill uniswap-security-foundations
 npx skills add coolclaws/uniswap-ai --skill uniswap-viem-integration
 ```
 
+## MCP Server
+
+Use uniswap-ai as an MCP server with Claude Desktop, Cursor, or any MCP-compatible client. The server runs **locally on your machine** — no deployment needed.
+
+### Setup (Claude Desktop)
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "uniswap": {
+      "command": "npx",
+      "args": ["-y", "@uniswap-ai/mcp"],
+      "env": {
+        "ETHEREUM_RPC_URL": "https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY",
+        "ARBITRUM_RPC_URL": "https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY"
+      }
+    }
+  }
+}
+```
+
+### Setup (Cursor / other MCP clients)
+
+```json
+{
+  "mcpServers": {
+    "uniswap": {
+      "command": "npx",
+      "args": ["-y", "@uniswap-ai/mcp"]
+    }
+  }
+}
+```
+
+### Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `get_pool_data` | Get Uniswap V3 pool data (liquidity, price, tick) |
+| `quote_swap` | Get a swap quote for any token pair |
+| `get_token_price` | Get current token price in USD |
+| `simulate_swap` | Simulate a swap with slippage and get deep link |
+| `plan_swap` | Full swap plan with risk assessment and execution link |
+| `assess_risk` | Assess risk for a swap (price impact, slippage) |
+
+### Example Usage in Claude
+
+Once configured, you can ask Claude:
+- "What's the current WETH price on Ethereum?"
+- "Get me a quote for swapping 1000 USDC to WETH"
+- "Plan a swap of 5000 USDC to WBTC on Arbitrum with 1% slippage"
+- "Is it safe to swap 100,000 USDC for WETH right now?"
+
+### Publishing to npm
+
+The MCP package is ready to publish. When you're ready:
+
+1. Add your npm token to GitHub repo secrets: `Settings → Secrets → New → NPM_TOKEN`
+2. Tag and push:
+```bash
+git tag mcp-v0.1.0
+git push origin mcp-v0.1.0
+```
+GitHub Actions will automatically build and publish `@uniswap-ai/mcp` to npm.
+
+---
+
 ## Skills & Plugins
 
 | Name | Description |

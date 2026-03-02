@@ -121,8 +121,63 @@ Calculates token amounts needed for a liquidity position.
 npx tsx packages/plugins/uniswap-integration/scripts/quote-liquidity.ts <chainId> <token0> <token1> <fee> <tickLower> <tickUpper> <amount0>
 ```
 
+## Pre-flight Check
+
+**ALWAYS run the pre-flight check before any execution script.** This validates signer configuration, required env vars, npm packages, and RPC endpoints — and gives the user clear fix instructions if anything is missing.
+
+```bash
+npx tsx scripts/check-signer.ts
+# or with explicit signer type:
+npx tsx scripts/check-signer.ts --signerType turnkey
+npx tsx scripts/check-signer.ts --signerType kms --chainId 42161
+```
+
+**If the check fails:**
+1. Show the full output to the user — it contains exact `export` commands and setup links
+2. Do NOT proceed with execution scripts until the check passes
+3. Explain the available signer options (privateKey / Turnkey / KMS) and recommend Turnkey for production
+
+**If the check passes (exit code 0):**
+- Proceed with the requested execution script
+- Note the wallet address and RPC URLs from the output
+
+Example workflow:
+```bash
+# Step 1: always check first
+npx tsx scripts/check-signer.ts --chainId 1
+
+# Step 2: only if check passes
+npx tsx scripts/simulate-swap.ts 1 USDC WETH 1000 0.5 3000
+```
+
+## Signing
+
+Execution scripts support three signer backends via `lib/signers.ts`. Set `UNISWAP_SIGNER_TYPE` to select:
+
+| Signer | `UNISWAP_SIGNER_TYPE` | Use Case |
+|--------|----------------------|----------|
+| Private Key (default) | `privateKey` | Local development only |
+| Turnkey | `turnkey` | Production (TEE-backed, non-custodial) |
+| AWS KMS | `kms` | Enterprise (HSM-backed) |
+
+**Private Key** — set `UNISWAP_EXEC_PRIVATE_KEY` or pass `--privateKey`. Dev only.
+
+**Turnkey** — requires `TURNKEY_API_PUBLIC_KEY`, `TURNKEY_API_PRIVATE_KEY`, `TURNKEY_ORGANIZATION_ID`, `TURNKEY_WALLET_ADDRESS`. Install: `npm install @turnkey/sdk-server @turnkey/viem`. See https://app.turnkey.com
+
+**AWS KMS** — requires `AWS_KMS_KEY_ID` (ECC_SECG_P256K1 key), `AWS_REGION`. Install: `npm install @aws-sdk/client-kms`. Instance profiles supported (no static credentials needed in AWS environments).
+
+```typescript
+import { getSignerWalletClient } from './lib/clients.js';
+
+const { walletClient, address } = await getSignerWalletClient(chainId, {
+  signerType: 'turnkey', // or 'kms' or 'privateKey'
+});
+```
+
 ## External Documentation
 
 - Uniswap V3 Developer Docs: https://docs.uniswap.org/contracts/v3/overview
 - Uniswap V3 Core Contracts: https://github.com/Uniswap/v3-core
 - Uniswap V3 Periphery: https://github.com/Uniswap/v3-periphery
+- Turnkey Docs: https://docs.turnkey.com
+- AWS KMS Docs: https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html

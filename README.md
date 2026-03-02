@@ -78,12 +78,75 @@ npx tsx packages/plugins/uniswap-integration/scripts/simulate-swap.ts 1 USDC WET
 npx tsx packages/plugins/uniswap-planner/scripts/plan-swap.ts 1 USDC WETH 1000
 ```
 
-## Environment Variables
+## Signing & Key Management
+
+Execution scripts support three signer backends. Choose based on your security requirements.
+
+### Option 1: Private Key (Development only)
+
+> ⚠️ Never use raw private keys in production.
 
 ```bash
-ETHEREUM_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY
-ARBITRUM_RPC_URL=https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY
-PRIVATE_KEY=0x...   # required for transaction execution only
+export UNISWAP_EXEC_PRIVATE_KEY=0x...
+npx tsx scripts/simulate-swap.ts --chainId 1 --tokenIn USDC --tokenOut WETH --amountIn 1000
+```
+
+Or pass inline:
+```bash
+npx tsx scripts/simulate-swap.ts --chainId 1 --tokenIn USDC --tokenOut WETH --amountIn 1000 --privateKey 0x...
+```
+
+### Option 2: Turnkey (Production recommended)
+
+[Turnkey](https://turnkey.com) stores private keys in TEE (Trusted Execution Environments) — even Turnkey cannot access your keys.
+
+```bash
+export UNISWAP_SIGNER_TYPE=turnkey
+export TURNKEY_API_PUBLIC_KEY=...
+export TURNKEY_API_PRIVATE_KEY=...
+export TURNKEY_ORGANIZATION_ID=...
+export TURNKEY_WALLET_ADDRESS=0x...   # on-chain address managed by Turnkey
+
+npm install @turnkey/sdk-server @turnkey/viem
+npx tsx scripts/simulate-swap.ts --chainId 1 --tokenIn USDC --tokenOut WETH --amountIn 1000
+```
+
+Get your Turnkey credentials at https://app.turnkey.com
+
+### Option 3: AWS KMS (Enterprise)
+
+AWS KMS uses hardware security modules (HSMs) where the private key never leaves AWS infrastructure.
+
+```bash
+export UNISWAP_SIGNER_TYPE=kms
+export AWS_KMS_KEY_ID=arn:aws:kms:us-east-1:123456789:key/your-key-id
+export AWS_REGION=us-east-1
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+
+npm install @aws-sdk/client-kms
+npx tsx scripts/simulate-swap.ts --chainId 1 --tokenIn USDC --tokenOut WETH --amountIn 1000
+```
+
+> KMS key must be of type `ECC_SECG_P256K1` (secp256k1 — Ethereum compatible).
+
+### Signer comparison
+
+| | Private Key | Turnkey | AWS KMS |
+|--|-------------|---------|---------|
+| Security | ⚠️ Low | ✅ High (TEE) | ✅ High (HSM) |
+| Key custody | You hold it | Non-custodial TEE | AWS HSM |
+| Setup | Instant | Minutes | Hours |
+| Cost | Free | Usage-based | AWS pricing |
+| Best for | Local dev | Production apps | Enterprise |
+| Audit | — | Trail of Bits, Zellic | SOC 2, FedRAMP |
+
+### Other environment variables
+
+```bash
+ETHEREUM_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_KEY   # optional, has public fallback
+ARBITRUM_RPC_URL=https://arb-mainnet.g.alchemy.com/v2/YOUR_KEY   # optional, has public fallback
+UNISWAP_EXEC_ACCOUNT=0x...   # read-only address for dry-run (no signing needed)
 ```
 
 ---

@@ -36,3 +36,7 @@ export function getOptionalStringArg(parsed: ParsedArgs, key: string): string | 
 export function getOptionalBooleanArg(parsed: ParsedArgs, key: string): boolean {
   return parsed[key] === true;
 }
+
+export function getOptionalSignerType(flags: Record<string, string>): string | undefined {
+  return flags['signerType'];
+}

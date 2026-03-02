@@ -50,3 +50,6 @@ export function getWalletClient(chainId: SupportedChainId, account: Account): Wa
     account,
   });
 }
+
+export { getSignerWalletClient, resolveSignerType } from './signers.js';
+export type { SignerType, SignerOptions } from './signers.js';

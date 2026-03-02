@@ -4,7 +4,7 @@ description: Foundational EVM integration for Uniswap V3-related scripts using v
 license: MIT
 metadata:
   author: Uniswap AI Contributors
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Uniswap viem Integration

@@ -4,7 +4,7 @@ description: Security baseline for Uniswap V3 integration and execution scripts.
 license: MIT
 metadata:
   author: Uniswap AI Contributors
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Uniswap V3 Security Foundations

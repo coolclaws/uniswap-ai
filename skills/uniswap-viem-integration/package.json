@@ -1,6 +1,6 @@
 {
   "name": "@uniswap-ai/skill-uniswap-viem-integration",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Installable skill package for Uniswap V3 viem integration",
   "license": "MIT",

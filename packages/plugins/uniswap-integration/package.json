@@ -1,6 +1,6 @@
 {
   "name": "@uniswap-ai/uniswap-integration",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Core Uniswap V3 integration, quotes, and pool data",
   "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",

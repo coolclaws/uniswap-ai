@@ -1,6 +1,6 @@
 {
   "name": "@uniswap-ai/skill-uniswap-security-foundations",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Installable skill package for Uniswap V3 security guidance",
   "license": "MIT",

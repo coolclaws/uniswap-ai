@@ -1,6 +1,6 @@
 {
   "name": "@uniswap-ai/uniswap-planner",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Position planning and strategy optimization for Uniswap V3",
   "author": "Uniswap AI Contributors <contributors@uniswap-ai.dev>",

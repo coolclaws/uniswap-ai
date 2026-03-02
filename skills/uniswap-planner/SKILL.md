@@ -4,7 +4,7 @@ description: This skill should be used when the user asks to "swap on uniswap", 
 license: MIT
 metadata:
   author: Uniswap AI Contributors
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Uniswap V3 Planner
